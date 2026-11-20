@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Reserva tu cita en la Clínica Veterinaria ConSentidos. Llena el formulario y nos pondremos en contacto contigo.">
+  <meta name="author" content="Luis Gerardo Barragan Vasquez">
+  <title>Reservar cita | Clínica Veterinaria ConSentidos</title>
+  <link rel="stylesheet" href="assets/css/consentidos.css">
+</head>
+<body id="cita">
+  <a href="#contenido">Saltar al contenido</a>
+
+  <header>
+    <img src="assets/img/logo-consentidos.svg" alt="Logotipo de la clínica: una huella con un corazón" width="56" height="56">
+    <hgroup>
+      <h1>Reservar una cita</h1>
+      <p>Clínica Veterinaria ConSentidos</p>
+    </hgroup>
+    <p>Luis Gerardo Barragan Vasquez<br>4GS121-01</p>
+  </header>
+
+<nav aria-label="Navegación del sitio">
+  <h2>El sitio</h2>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="servicios.html">Servicios</a></li>
+    <li><a href="componentes.html">Guía de componentes</a></li>
+    <li><a href="tarifas.html">Tarifas</a></li>
+    <li><a href="cita.html">Reservar cita</a></li>
+    <li><a href="paginas/test.html">Página de prueba</a></li>
+  </ul>
+</nav>
+
+  <main id="contenido">
+    <section>
+      <h2>Formulario de reserva</h2>
+      <p>Completa los siguientes datos y nos comunicaremos contigo para confirmar tu cita.</p>
+
+      <form action="#" method="post" id="form-cita">
+        <!-- Sección: Datos del dueño -->
+        <fieldset>
+          <legend>Datos de quien reserva</legend>
+
+          <div>
+            <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
+            <input type="text" id="nombre" name="nombre" required autocomplete="name">
+          </div>
+
+          <div>
+            <label for="telefono">Teléfono <span aria-hidden="true">*</span></label>
+            <input type="tel" id="telefono" name="telefono" required autocomplete="tel" pattern="[0-9]{4}-[0-9]{4}" placeholder="Ej: 5555-5555">
+          </div>
+
+          <div>
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" autocomplete="email" placeholder="tucorreo@ejemplo.com">
+          </div>
+        </fieldset>
+
+        <!-- Sección: Datos de la mascota -->
+        <fieldset>
+          <legend>Datos de tu mascota</legend>
+
+          <div>
+            <label for="mascota">Nombre de la mascota <span aria-hidden="true">*</span></label>
+            <input type="text" id="mascota" name="mascota" required>
+          </div>
+
+          <div>
+            <label for="especie">Especie <span aria-hidden="true">*</span></label>
+            <select id="especie" name="especie" required>
+              <option value="">Selecciona una opción</option>
+              <option value="perro">Perro</option>
+              <option value="gato">Gato</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="raza">Raza</label>
+            <input type="text" id="raza" name="raza" placeholder="Ej: Criollo, Golden Retriever...">
+          </div>
+
+          <div>
+            <label for="edad">Edad (en años)</label>
+            <input type="number" id="edad" name="edad" min="0" max="50" step="1">
+          </div>
+        </fieldset>
+
+        <!-- Sección: Servicio y fecha -->
+        <fieldset>
+          <legend>Servicio y disponibilidad</legend>
+
+          <div>
+            <p>Tipo de servicio que necesitas <span aria-hidden="true">*</span></p>
+            <ul>
+              <li>
+                <input type="radio" id="servicio-consulta" name="servicio" value="consulta" required>
+                <label for="servicio-consulta">Consulta general</label>
+              </li>
+              <li>
+                <input type="radio" id="servicio-vacuna" name="servicio" value="vacunación">
+                <label for="servicio-vacuna">Vacunación</label>
+              </li>
+              <li>
+                <input type="radio" id="servicio-desparasitar" name="servicio" value="desparasitación">
+                <label for="servicio-desparasitar">Desparasitación</label>
+              </li>
+              <li>
+                <input type="radio" id="servicio-otro" name="servicio" value="otro">
+                <label for="servicio-otro">Otro</label>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <label for="fecha-preferida">Fecha preferida <span aria-hidden="true">*</span></label>
+            <input type="date" id="fecha-preferida" name="fecha-preferida" required>
+          </div>
+
+          <div>
+            <label for="horario">Horario preferido</label>
+            <select id="horario" name="horario">
+              <option value="">Sin preferencia</option>
+              <option value="manana">Mañana (8:00 a 12:00)</option>
+              <option value="tarde">Tarde (1:00 a 5:00)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="mensaje">Información adicional o síntomas que quieras comentar</label>
+            <textarea id="mensaje" name="mensaje" rows="4" maxlength="500" placeholder="Máximo 500 caracteres"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Aviso y botones -->
+        <p><em>Los campos marcados con <span aria-hidden="true">*</span> son obligatorios</em></p>
+
+        <div>
+          <button type="reset">Limpiar formulario</button>
+          <button type="submit">Enviar solicitud de cita</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <aside>
+    <h2>Horario de atención</h2>
+    <p>Lunes a viernes de 8:00 a. m. a 6:00 p. m.<br>
+    Sábados de 8:00 a. m. a 12:00 m.<br>
+    Urgencias: las 24 horas por teléfono.</p>
+  </aside>
+
+  <footer>
+    <p><small>© 2026 Clínica Veterinaria ConSentidos · Práctica de Desarrollo de Software V, UTP Centro Regional de Veraguas</small></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Galería de imágenes, videos y audios de la Clínica Veterinaria ConSentidos. Conoce a nuestras mascotas y nuestros consejos de salud.">
+  <meta name="author" content="Luis Gerardo Barragan Vasquez">
+  <title>Galería | Clínica Veterinaria ConSentidos</title>
+  <link rel="stylesheet" href="assets/css/consentidos.css">
+</head>
+<body id="galeria">
+  <a href="#contenido">Saltar al contenido</a>
+
+  <header>
+    <img src="assets/img/logo-consentidos.svg" alt="Logotipo de la clínica: una huella con un corazón" width="56" height="56">
+    <hgroup>
+      <h1>Galería</h1>
+      <p>Clínica Veterinaria ConSentidos</p>
+    </hgroup>
+    <p>Luis Gerardo Barragan Vasquez<br>4GS121-01</p>
+  </header>
+
+<nav aria-label="Navegación del sitio">
+  <h2>El sitio</h2>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="servicios.html">Servicios</a></li>
+    <li><a href="componentes.html">Guía de componentes</a></li>
+    <li><a href="tarifas.html">Tarifas</a></li>
+    <li><a href="cita.html">Reservar cita</a></li>
+    <li><a href="galeria.html" aria-current="page">Galería</a></li>
+    <li><a href="paginas/test.html">Página de prueba</a></li>
+  </ul>
+</nav>
+
+  <main id="contenido">
+    <!-- Sección: Imágenes -->
+    <section id="imagenes">
+      <h2>Nuestras mascotas</h2>
+      <p>Conoce a algunos de los pacientes que han pasado por nuestra clínica.</p>
+
+      <div class="galeria">
+        <figure>
+          <img src="assets/img/luna.svg" alt="Luna, una gata gris atigrada, mirando de frente" width="300" height="300" loading="lazy">
+          <figcaption>Luna, nuestra gata representativa</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/img/luna.svg" alt="Dibujo de un perro sonriente con orejas largas" width="300" height="300" loading="lazy">
+          <figcaption>Max, paciente frecuente</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/img/luna.svg" alt="Ilustración de una mascota pequeña con orejas redondas" width="300" height="300" loading="lazy">
+          <figcaption>Mishi, recién llegada</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Sección: Video -->
+    <section id="video">
+      <h2>Consejos de salud</h2>
+      <p>Algunas recomendaciones breves para el cuidado de tu mascota en casa.</p>
+
+      <figure>
+        <video controls poster="assets/media/consejos-poster.jpg" width="600" height="340">
+          <source src="assets/media/consejos.webm" type="video/webm">
+          <source src="assets/media/consejos.mp4" type="video/mp4">
+          <track src="assets/media/consejos-es.vtt" kind="subtitles" srclang="es" label="Español">
+          Tu navegador no soporta el elemento de video.
+          <a href="assets/media/consejos.mp4">Descarga el video aquí</a>.
+        </video>
+        <figcaption>Consejos básicos de higiene y alimentación · Duración: 2 minutos</figcaption>
+      </figure>
+    </section>
+
+    <!-- Sección: Audio -->
+    <section id="audio">
+      <h2>Recordatorios</h2>
+      <p>Escucha nuestro mensaje con los cuidados esenciales para tu mascota esta temporada.</p>
+
+      <figure>
+        <audio controls>
+          <source src="assets/media/recordatorio.mp3" type="audio/mpeg">
+          Tu navegador no soporta el elemento de audio.
+          <a href="assets/media/recordatorio.mp3">Descarga el audio</a>.
+        </audio>
+        <figcaption>Recordatorio de vacunación y desparasitación · 30 segundos</figcaption>
+      </figure>
+    </section>
+
+    <!-- Sección: Transcripciones -->
+    <section id="transcripciones">
+      <h2>Transcripciones</h2>
+
+      <details>
+        <summary>📝 Ver transcripción del video</summary>
+        <p><strong>Consejos de salud para tu mascota:</strong><br>
+        Mantén al día su calendario de vacunación. Llévala al menos una vez al año al veterinario. Proporciónale agua fresca y limpia todos los días. Aliméntala según su edad y tamaño. No le des alimentos tóxicos como chocolate, cebolla o uvas. Haz que haga ejercicio regularmente. ¡Gracias por cuidar a tu mascota!</p>
+      </details>
+
+      <details>
+        <summary>📝 Ver transcripción del audio</summary>
+        <p><strong>Recordatorio de vacunación:</strong><br>
+        Hola, este es un recordatorio amable de que la vacuna antirrábica debe aplicarse cada año. No olvides también desparasitar a tu mascota cada tres meses si sale al exterior. Si tienes dudas sobre su próximo turno, no dudes en llamarnos. ¡Gracias por confiar en ConSentidos!</p>
+      </details>
+    </section>
+  </main>
+
+  <aside>
+    <h2>Horario de atención</h2>
+    <p>Lunes a viernes de 8:00 a. m. a 6:00 p. m.<br>
+    Sábados de 8:00 a. m. a 12:00 m.<br>
+    Urgencias: las 24 horas por teléfono.</p>
+  </aside>
+
+  <footer>
+    <p><small>© 2026 Clínica Veterinaria ConSentidos · Práctica de Desarrollo de Software V, UTP Centro Regional de Veraguas</small></p>
+  </footer>
+</body>
+</html>
