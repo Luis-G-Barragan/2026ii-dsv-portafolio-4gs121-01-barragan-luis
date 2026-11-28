@@ -1,0 +1,212 @@
+/* =====================================================================
+   tema.css — Tema visual de la Clínica Veterinaria ConSentidos
+   Desarrollo de Software V · Módulo III · Práctica 1
+
+   Esta hoja se enlaza DESPUÉS de consentidos.css en las siete páginas.
+   No modifiques consentidos.css: todo el cambio visual va aquí.
+
+   Reglas de la práctica
+   - Sin !important.
+   - Sin @layer (la guía explica por qué, en el Paso 5).
+   - Cada sección empieza con un comentario que explica qué cambia.
+
+   Sigue la guía de la práctica, paso a paso, en este orden.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   0. Importaciones (Paso 4)
+      @import tiene que ir antes que cualquier otra regla de la hoja.
+   --------------------------------------------------------------------- */
+@import "../vendor/fontawesome/css/solid.min.css";
+
+/* ---------------------------------------------------------------------
+   1. Fuente de los títulos (Paso 2)
+      @font-face con assets/fonts/Bitter-VF.woff2
+   --------------------------------------------------------------------- */
+@font-face {
+  font-family: "Bitter";
+  src: url("../fonts/Bitter-VF.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------------------------------------------------------------------
+   2. Paleta (Paso 1)
+      Redefine en :root las variables de consentidos.css, en modo claro
+      y en modo oscuro. Anota junto a cada color de texto su contraste.
+   --------------------------------------------------------------------- */
+:root {
+  /* Paleta clínica clara (marino, ámbar cálido y superficies neutras) */
+  --marino: #133856;
+  --marino-claro: #1e527a;
+  --ambar: #b45309;
+  --fondo: #f8fafc;
+  --superficie: #ffffff;
+  --borde: #cbd5e1;
+
+  /* Texto y estados: contraste >= 4.5:1 sobre su fondo */
+  --texto: #1e293b;          /* ~13.8:1 sobre #f8fafc y ~14.7:1 sobre #ffffff */
+  --texto-suave: #475569;    /* ~7.0:1 sobre #f8fafc y ~7.5:1 sobre #ffffff */
+  --codigo-fondo: #eef2f6;
+  --cabecera-fondo: #0f2940;
+  --cabecera-texto: #f8fafc;   /* ~14.9:1 sobre #0f2940 */
+  --cabecera-suave: #cbd5e1;   /* ~10.6:1 sobre #0f2940 */
+  --foco: #0284c7;
+  --visitado: #5b21b6;       /* ~9.8:1 sobre #f8fafc */
+
+  /* Tipografía y transiciones */
+  --fuente-titulos: "Bitter", Georgia, "Times New Roman", serif;
+  --transicion: 0.2s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --marino: #16324a;
+    --marino-claro: #234d70;
+    --ambar: #f59e0b;
+    --fondo: #0f172a;
+    --superficie: #1e293b;
+    --borde: #334155;
+
+    /* Texto y estados en oscuro: contraste >= 4.5:1 */
+    --texto: #f1f5f9;          /* ~15.8:1 sobre #0f172a y ~11.8:1 sobre #1e293b */
+    --texto-suave: #cbd5e1;    /* ~11.6:1 sobre #0f172a y ~8.7:1 sobre #1e293b */
+    --codigo-fondo: #0b1220;
+    --cabecera-fondo: #091120;
+    --cabecera-texto: #f8fafc;   /* ~17.4:1 sobre #091120 */
+    --cabecera-suave: #cbd5e1;   /* ~12.8:1 sobre #091120 */
+    --foco: #38bdf8;
+    --visitado: #c4b5fd;       /* ~9.4:1 sobre #0f172a */
+  }
+}
+
+/* ---------------------------------------------------------------------
+   3. Tipografía (Paso 2)
+      Familia de los títulos, escala, interlineado y longitud de línea.
+   --------------------------------------------------------------------- */
+body {
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fuente-titulos);
+}
+
+body > header h1 {
+  font-weight: 750;
+}
+
+section > h2 {
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 1.875rem);
+  border-bottom-color: var(--ambar);
+}
+
+main p,
+main li {
+  max-width: 65ch;
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------------
+   4. Enlaces y estados (Paso 3)
+      Orden LVHA dentro de <main>, menú con transición y
+      prefers-reduced-motion.
+   --------------------------------------------------------------------- */
+main a:link {
+  color: var(--marino-claro);
+}
+
+main a:visited {
+  color: var(--visitado);
+}
+
+main a:hover {
+  color: var(--ambar);
+}
+
+main a:active {
+  color: var(--marino);
+}
+
+body > nav a,
+button,
+[type="submit"],
+[type="reset"] {
+  transition:
+    color var(--transicion),
+    background-color var(--transicion),
+    border-color var(--transicion),
+    outline-color var(--transicion);
+}
+
+:is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   5. Iconos (Paso 4)
+      Font Awesome con ::before en el menú y en los datos de contacto.
+   --------------------------------------------------------------------- */
+body > nav a::before,
+body > footer address a::before {
+  font: var(--fa-font-solid);
+  display: inline-block;
+  width: 1.25em;
+  margin-right: 0.5em;
+  text-align: center;
+}
+
+/* Iconos del menú principal según el destino del enlace */
+body > nav a[href$="index.html"]::before,
+body > nav a[href$="/"]::before,
+body > nav a[href="./"]::before {
+  content: "\f015" / "";
+}
+
+body > nav a[href$="servicios.html"]::before {
+  content: "\f0f1" / "";
+}
+
+body > nav a[href$="componentes.html"]::before {
+  content: "\f518" / "";
+}
+
+body > nav a[href$="tarifas.html"]::before {
+  content: "\f02c" / "";
+}
+
+body > nav a[href$="cita.html"]::before {
+  content: "\f274" / "";
+}
+
+body > nav a[href$="galeria.html"]::before {
+  content: "\f0c3" / "";
+}
+
+body > nav a[href$="test.html"]::before {
+  content: "\f0c3" / "";
+}
+
+/* Iconos de contacto en el pie de página */
+body > footer address a[href^="tel:"]::before {
+  content: "\f095" / "";
+}
+
+body > footer address a[href^="mailto:"]::before {
+  content: "\f0e0" / "";
+}
