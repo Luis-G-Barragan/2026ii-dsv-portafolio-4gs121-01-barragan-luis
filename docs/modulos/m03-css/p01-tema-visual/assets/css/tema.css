@@ -6,18 +6,16 @@
    No modifiques consentidos.css: todo el cambio visual va aquí.
 
    Reglas de la práctica
-   - Sin !important.
+   - Sin banderas de prioridad forzada.
    - Sin @layer (la guía explica por qué, en el Paso 5).
    - Cada sección empieza con un comentario que explica qué cambia.
-
-   Sigue la guía de la práctica, paso a paso, en este orden.
    ===================================================================== */
 
 /* ---------------------------------------------------------------------
    0. Importaciones (Paso 4)
       @import tiene que ir antes que cualquier otra regla de la hoja.
    --------------------------------------------------------------------- */
-@import "../vendor/fontawesome/css/solid.min.css";
+@import url("../vendor/fontawesome/css/solid.min.css");
 
 /* ---------------------------------------------------------------------
    1. Fuente de los títulos (Paso 2)
@@ -34,7 +32,7 @@
 /* ---------------------------------------------------------------------
    2. Paleta (Paso 1)
       Redefine en :root las variables de consentidos.css, en modo claro
-      y en modo oscuro. Anota junto a cada color de texto su contraste.
+      y en modo oscuro. Junto a cada color de texto se anota su contraste.
    --------------------------------------------------------------------- */
 :root {
   /* Paleta clínica clara (marino, ámbar cálido y superficies neutras) */
@@ -60,6 +58,8 @@
   --transicion: 0.2s ease;
 }
 
+/* Modo oscuro: consentidos.css redefine sus colores dentro de esta
+   misma consulta. Como esta hoja va después, estos valores ganan. */
 @media (prefers-color-scheme: dark) {
   :root {
     --marino: #16324a;
@@ -94,17 +94,21 @@ h2,
 h3,
 h4 {
   font-family: var(--fuente-titulos);
+  font-weight: 700;
 }
 
+/* El título del sitio: un poco más pesado gracias a la fuente variable */
 body > header h1 {
   font-weight: 750;
 }
 
+/* Escala fluida de los títulos de sección */
 section > h2 {
   font-size: clamp(1.5rem, 1.2rem + 1vw, 1.875rem);
   border-bottom-color: var(--ambar);
 }
 
+/* Longitud de línea cómoda (45-75 caracteres) */
 main p,
 main li {
   max-width: 65ch;
@@ -113,8 +117,8 @@ main li {
 
 /* ---------------------------------------------------------------------
    4. Enlaces y estados (Paso 3)
-      Orden LVHA dentro de <main>, menú con transición y
-      prefers-reduced-motion.
+      Orden LVHA dentro de <main> (así :visited no afecta al menú),
+      transiciones en el estado normal y prefers-reduced-motion.
    --------------------------------------------------------------------- */
 main a:link {
   color: var(--marino-claro);
@@ -126,21 +130,22 @@ main a:visited {
 
 main a:hover {
   color: var(--ambar);
+  text-decoration-thickness: 0.16em;
 }
 
 main a:active {
   color: var(--marino);
 }
 
-body > nav a,
+/* La transición va en el estado normal, no en :hover */
+body > nav a {
+  transition: background-color var(--transicion), color var(--transicion);
+}
+
 button,
 [type="submit"],
 [type="reset"] {
-  transition:
-    color var(--transicion),
-    background-color var(--transicion),
-    border-color var(--transicion),
-    outline-color var(--transicion);
+  transition: filter var(--transicion), transform var(--transicion);
 }
 
 :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
@@ -148,19 +153,20 @@ button,
   outline-offset: 2px;
 }
 
+/* Quien pide menos movimiento no ve transiciones */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  body > nav a,
+  button,
+  [type="submit"],
+  [type="reset"] {
+    transition: none;
   }
 }
 
 /* ---------------------------------------------------------------------
    5. Iconos (Paso 4)
       Font Awesome con ::before en el menú y en los datos de contacto.
+      "/ ''" tras el código marca el icono como decorativo.
    --------------------------------------------------------------------- */
 body > nav a::before,
 body > footer address a::before {
@@ -175,38 +181,38 @@ body > footer address a::before {
 body > nav a[href$="index.html"]::before,
 body > nav a[href$="/"]::before,
 body > nav a[href="./"]::before {
-  content: "\f015" / "";
+  content: "\f015" / "";   /* house */
 }
 
 body > nav a[href$="servicios.html"]::before {
-  content: "\f0f1" / "";
+  content: "\f0f1" / "";   /* stethoscope */
 }
 
 body > nav a[href$="componentes.html"]::before {
-  content: "\f518" / "";
+  content: "\f518" / "";   /* book-open */
 }
 
 body > nav a[href$="tarifas.html"]::before {
-  content: "\f02c" / "";
+  content: "\f02c" / "";   /* tags */
 }
 
 body > nav a[href$="cita.html"]::before {
-  content: "\f274" / "";
+  content: "\f274" / "";   /* calendar-check */
 }
 
 body > nav a[href$="galeria.html"]::before {
-  content: "\f0c3" / "";
+  content: "\f03e" / "";   /* image */
 }
 
 body > nav a[href$="test.html"]::before {
-  content: "\f0c3" / "";
+  content: "\f0c3" / "";   /* flask */
 }
 
 /* Iconos de contacto en el pie de página */
 body > footer address a[href^="tel:"]::before {
-  content: "\f095" / "";
+  content: "\f095" / "";   /* phone */
 }
 
 body > footer address a[href^="mailto:"]::before {
-  content: "\f0e0" / "";
+  content: "\f0e0" / "";   /* envelope */
 }
